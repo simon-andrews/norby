@@ -1,5 +1,5 @@
-#ifndef NORBY_METAMACROS_H
-#define NORBY_METAMACROS_H
+#ifndef NORBY_VERSION_H
+#define NORBY_VERSION_H
 
 #define NORBY_VERSION "0.0.1"
 
