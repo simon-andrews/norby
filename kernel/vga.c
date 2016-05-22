@@ -35,6 +35,7 @@ void clear_screen() {
   }
   vga_row = 0;
   vga_column = 0;
+  update_cursor_position();
 }
 
 void set_text_colors(enum vga_color fg, enum vga_color bg) {
