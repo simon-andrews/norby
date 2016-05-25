@@ -38,8 +38,16 @@ void clear_screen() {
   update_cursor_position();
 }
 
+void set_text_color(uint8_t color) {
+  vga_color = color;
+}
+
 void set_text_colors(enum vga_color fg, enum vga_color bg) {
   vga_color = make_vga_color(fg, bg);
+}
+
+uint8_t get_current_text_color() {
+  return vga_color;
 }
 
 void update_cursor_position() {

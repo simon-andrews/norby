@@ -31,7 +31,9 @@ extern size_t vga_column;
 
 void initialize_screen();
 void clear_screen();
+void set_text_color(uint8_t color);
 void set_text_colors(enum vga_color fg, enum vga_color bg);
+uint8_t get_current_text_color();
 
 void update_cursor_position();
 void set_cursor_position(int x, int y);
