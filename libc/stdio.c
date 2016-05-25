@@ -2,12 +2,7 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <string.h>
-
-extern void update_cursor_position();
-extern void put_char_at(char c, int x, int y);
-
-extern size_t vga_row;
-extern size_t vga_column;
+#include <norby/vga.h>
 
 int printf(const char* restrict format, ...) {
   va_list args;

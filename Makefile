@@ -30,7 +30,7 @@ $(BUILD_DIR)/libnorbyc.a: $(LIBC_OBJECT_FILES)
 	$(AR) rcs $(BUILD_DIR)/libnorbyc.a $(LIBC_OBJECT_FILES)
 
 $(BUILD_DIR)/$(LIBC_SOURCE_DIR)/%.c.o: $(LIBC_SOURCE_DIR)/%.c
-	$(CC) $(CFLAGS) -Ilibc/include -c $< -o $@
+	$(CC) $(CFLAGS) -Ilibc/include -Ikernel/include -c $< -o $@
 
 kernel: $(BUILD_DIR)/norby.bin
 libc: $(BUILD_DIR)/libnorbyc.a

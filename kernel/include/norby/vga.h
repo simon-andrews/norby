@@ -1,6 +1,7 @@
 #ifndef NORBY_VGA_H
 #define NORBY_VGA_H
 
+#include <stddef.h>
 #include <stdint.h>
 
 #define VGA_WIDTH 80
@@ -24,6 +25,9 @@ enum vga_color {
   VGA_COLOR_LIGHT_BROWN = 14,
   VGA_COLOR_WHITE = 15,
 };
+
+extern size_t vga_row;
+extern size_t vga_column;
 
 void initialize_screen();
 void clear_screen();

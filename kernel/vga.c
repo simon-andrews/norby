@@ -43,12 +43,13 @@ void set_text_colors(enum vga_color fg, enum vga_color bg) {
 }
 
 void update_cursor_position() {
-  int newpos_x = vga_column ;
-  int newpos_y = vga_row;
-  if(vga_row > VGA_WIDTH) {
-    newpos_x = 0;
+  if(vga_row > VGA_HEIGHT - 1) {
+    clear_screen();
   }
-  set_cursor_position(newpos_x, newpos_y);
+  if(vga_row > VGA_WIDTH) {
+    vga_column = 0;
+  }
+  set_cursor_position(vga_column, vga_row);
 }
 
 void set_cursor_position(int x, int y) {
