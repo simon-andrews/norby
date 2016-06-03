@@ -23,7 +23,7 @@ int strcmp(const char* str1, const char* str2) {
   if(str1 == str2) {
     return 0;
   }
-  if(str1[0] == '\0' || str2[0] == '\0') {
+  if((str1[0] == '\0' || str2[0] == '\0') && (str1[0] != str2[0])) {
     return -1; //It's what GLibC does, I think...
   }
   size_t longest_len = (strlen(str1) < strlen(str2)) ? strlen(str1) : strlen(str2);
