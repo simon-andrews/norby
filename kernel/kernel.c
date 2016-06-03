@@ -35,6 +35,9 @@ void kmain() {
 		else if(strcmp(buffer, "clear") == 0) {
 			clear_screen();
 		}
+		else {
+			printf("Unrecognized command: %s\n", buffer);
+		}
 	}
 
 	//Enter an endless loop. If you disable this, another loop in boot.asm will
