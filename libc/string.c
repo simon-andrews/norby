@@ -1,5 +1,6 @@
 #include <stddef.h>
 #include <stdint.h>
+#include <string.h>
 
 void* memcpy(void* dest, const void* src, size_t n) {
   uint8_t* u8_dest = (uint8_t*) dest;
@@ -16,6 +17,21 @@ void* memset(void* destination, int chr, size_t count) {
     buffer[i] = chr;
   }
   return destination;
+}
+
+int strcmp(const char* str1, const char* str2) {
+  if(str1 == str2) {
+    return 0;
+  }
+  size_t str1_len = strlen(str1);
+  size_t str2_len = strlen(str2);
+  size_t longest_len = (str1_len < str2_len) ? str1_len : str2_len;
+  for(unsigned int i = 0; i < longest_len; i++) {
+    if(!(str1[i] == str2[i])) {
+      return (int) str1[i] - str2[i];
+    }
+  }
+  return 0;
 }
 
 size_t strlen(const char* str) {

@@ -25,12 +25,13 @@ void kmain() {
 	set_text_colors(VGA_COLOR_LIGHT_GRAY, VGA_COLOR_BLACK);
 	clear_screen();
 	printf("NorbyOS v%s\n", NORBY_VERSION);
-	printf("==> colortest\n");
-	colortest();
 	char* buffer;
 	while(1) {
 		printf("==> ");
 		gets_s(buffer, 100);
+		if(strcmp(buffer, "colortest") == 0) {
+			colortest();
+		}
 	}
 
 	//Enter an endless loop. If you disable this, another loop in boot.asm will
