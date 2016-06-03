@@ -26,10 +26,10 @@ void kmain() {
 	clear_screen();
 	printf("NorbyOS v%s\n", NORBY_VERSION);
 	char* buffer;
+	size_t buffer_size = 100;
 	while(1) {
-		memset(buffer, 0, sizeof(buffer));
 		printf("==> ");
-		gets_s(buffer, 100);
+		gets_s(buffer, buffer_size);
 		if(strcmp(buffer, "colortest") == 0) {
 			colortest();
 		}
@@ -39,6 +39,7 @@ void kmain() {
 		else {
 			printf("Unrecognized command: %s\n", buffer);
 		}
+		memset(buffer, 0, buffer_size);
 	}
 
 	//Enter an endless loop. If you disable this, another loop in boot.asm will
