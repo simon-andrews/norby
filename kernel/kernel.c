@@ -27,7 +27,11 @@ void kmain() {
 	printf("NorbyOS v%s\n", NORBY_VERSION);
 	printf("==> colortest\n");
 	colortest();
-	printf("==> ");
+	char* buffer;
+	while(1) {
+		printf("==> ");
+		gets_s(buffer, 100);
+	}
 
 	//Enter an endless loop. If you disable this, another loop in boot.asm will
 	//start, but interrupts will be disabled.

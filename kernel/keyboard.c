@@ -1,6 +1,10 @@
 #include <norby/irq.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <sys/io.h>
+
+char last_pressed;
+bool new_key_availible;
 
 const char set1_scan_codes[] = {
   0,  27, '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
@@ -42,19 +46,31 @@ const char set1_scan_codes[] = {
   0,	// All other keys are undefined
 };
 
+char get_latest_char() {
+  new_key_availible = false;
+  return last_pressed;
+}
+
+bool new_key_is_availible() {
+  return new_key_availible;
+}
+
 //void keyboard_handler(struct regs* r) {
 void keyboard_handler() {
   unsigned char scancode = inb(0x60);
   if(scancode & 0x80) {
-    //TODO: Fill me
-  } else if(set1_scan_codes[scancode] == 0) {
+    //pass, for now
+  }
+  else if(set1_scan_codes[scancode] == 0) {
     //pass
   }
   else {
-    putchar(set1_scan_codes[scancode]);
+    last_pressed = set1_scan_codes[scancode];
+    new_key_availible = true;
   }
 }
 
 void install_keyboard() {
+  new_key_availible = false;
   irq_install_handler(1, keyboard_handler);
 }
