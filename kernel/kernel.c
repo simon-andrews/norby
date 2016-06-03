@@ -32,6 +32,9 @@ void kmain() {
 		if(strcmp(buffer, "colortest") == 0) {
 			colortest();
 		}
+		else if(strcmp(buffer, "clear") == 0) {
+			clear_screen();
+		}
 	}
 
 	//Enter an endless loop. If you disable this, another loop in boot.asm will
