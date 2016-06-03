@@ -38,6 +38,7 @@ void kmain() {
 		else {
 			printf("Unrecognized command: %s\n", buffer);
 		}
+		memset(buffer, 0, sizeof(buffer));
 	}
 
 	//Enter an endless loop. If you disable this, another loop in boot.asm will
