@@ -25,7 +25,7 @@ void kmain() {
 	set_text_colors(VGA_COLOR_LIGHT_GRAY, VGA_COLOR_BLACK);
 	clear_screen();
 	printf("NorbyOS v%s\n", NORBY_VERSION);
-	char* buffer;
+	char* buffer = "";
 	size_t buffer_size = 100;
 	while(1) {
 		printf("==> ");
