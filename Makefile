@@ -13,6 +13,12 @@ KERNEL_OBJECT_FILES=$(addprefix $(BUILD_DIR)/, $(addsuffix .o, $(KERNEL_SOURCE_F
 run: kernel
 	qemu-system-i386 -kernel $(BUILD_DIR)/norby.bin
 
+iso: kernel
+	mkdir -p $(BUILD_DIR)/iso/boot/grub
+	cp $(BUILD_DIR)/norby.bin $(BUILD_DIR)/iso/boot
+	cp grub/grub.cfg $(BUILD_DIR)/iso/boot/grub
+	grub-mkrescue -o $(BUILD_DIR)/norby.iso $(BUILD_DIR)/iso
+
 $(BUILD_DIR)/norby.bin: $(KERNEL_OBJECT_FILES) libc
 	$(CC) -T $(KERNEL_SOURCE_DIR)/linker.ld -o $(BUILD_DIR)/norby.bin $(CFLAGS) $(KERNEL_OBJECT_FILES) $(LIBNORBYC_FLAGS)
 
