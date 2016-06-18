@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include <string.h>
+#include <norby/idt.h>
 
 struct idt_entry {
   uint16_t base_lo;
@@ -14,8 +15,8 @@ struct idt_ptr {
   uint32_t base;
 } __attribute__((packed));
 
-struct idt_entry idt[256];
-struct idt_ptr idtp;
+idt_entry_t idt[256];
+idt_ptr_t idtp;
 
 extern void load_idt();
 
@@ -28,8 +29,8 @@ void idt_set_gate(uint8_t num, uint32_t base, uint16_t sel, uint8_t flags) {
 }
 
 void install_idt() {
-  idtp.limit = (sizeof (struct idt_entry) * 256) - 1;
+  idtp.limit = (sizeof (idt_entry_t) * 256) - 1;
   idtp.base = (uint32_t) &idt;
-  memset(&idt, 0, sizeof(struct idt_entry) * 256);
+  memset(&idt, 0, sizeof(idt_entry_t) * 256);
   load_idt();
 }
