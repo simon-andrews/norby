@@ -90,19 +90,19 @@ const char* exception_messages[] = {
   "Coprocessor Fault",
   "Alignment Check",
   "Machine Check",
-  "Reserved,"
-  "Reserved,"
-  "Reserved,"
-  "Reserved,"
-  "Reserved,"
-  "Reserved,"
-  "Reserved,"
-  "Reserved,"
-  "Reserved,"
-  "Reserved,"
-  "Reserved,"
-  "Reserved,"
-  "Reserved,"
+  "Reserved",
+  "Reserved",
+  "Reserved",
+  "Reserved",
+  "Reserved",
+  "Reserved",
+  "Reserved",
+  "Reserved",
+  "Reserved",
+  "Reserved",
+  "Reserved",
+  "Reserved",
+  "Reserved",
 };
 
 void fault_handler(struct regs* r) {
