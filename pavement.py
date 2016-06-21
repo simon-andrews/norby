@@ -80,3 +80,8 @@ def run():
 @needs(['iso'])
 def run_iso():
     sh('qemu-system-i386 {iso_loc}'.format(iso_loc=os.path.join(build_dir, 'norby.iso')))
+
+@task
+def test_libc():
+    sh('paver libc --for_host') #I can't figure out a way to @needs it with the flag
+    sh('cd libc/tests && python3 run_tests.py')
