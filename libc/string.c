@@ -20,9 +20,9 @@ void* memset(void* destination, int chr, size_t count) {
 }
 
 int strcmp(const char* str1, const char* str2) {
-  /*if(str1 == str2) {
+  if(str1 == str2) { //Check to see if str1 and str2 point to the same place
     return 0;
-  }*/
+  }
   if((str1[0] == '\0' || str2[0] == '\0') && (str1[0] != str2[0])) {
     return -1; //It's what GLibC does, I think...
   }
