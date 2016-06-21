@@ -2,4 +2,4 @@
 #define ASSERT_EQ(a, b) {if(a != b) return 1; }
 #define ASSERT_NQ(a, b) {if(a == b) return 1; }
 
-#define ASSERT(expr) {if(!(expr)) return 1; }
+#define ASSERT(expr) { if(!(expr)) return 1; }
