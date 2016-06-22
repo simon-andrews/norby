@@ -21,9 +21,11 @@ char* gets_s(char* buffer, size_t buffer_size) {
         break;
       }
       else {
-        buffer[buffer_index] = next_character;
-        buffer_index++;
-        putchar(next_character);
+        if(buffer_index < buffer_size) {
+          buffer[buffer_index] = next_character;
+          buffer_index++;
+          putchar(next_character);
+        }
       }
     }
   }
