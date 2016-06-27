@@ -5,8 +5,9 @@
 
 void start_shell() {
   size_t buffer_size = 100;
-  char* buffer[buffer_size];
+  char* fixed_buffer[buffer_size];
   while(1) {
+    char* buffer = fixed_buffer;
     printf("==> ");
     gets_s(buffer, buffer_size);
     if(strcmp(buffer, "colortest") == 0) {
