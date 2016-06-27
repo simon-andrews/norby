@@ -1,4 +1,5 @@
 #include <norby/shell.h>
+#include <norby/vga.h>
 #include <stdio.h>
 #include <string.h>
 
