@@ -4,3 +4,8 @@ language: python
 
 install: pip install paver
 script: paver test_libc
+
+addons:
+  apt:
+    packages:
+    - nasm
