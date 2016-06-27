@@ -1,11 +1,6 @@
-language: c
+#This is a C project, but Python works better.
+#Has C compiler, plus I can use Pip to install Paver
+language: python
 
 install: pip install paver
 script: paver test_libc
-
-addons:
-  apt:
-    packages:
-    - python
-    - python3
-    - python-pip
