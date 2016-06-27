@@ -12,7 +12,6 @@ void panic(const char* message) {
 	clear_screen();
 	puts("There's been a kernel panic! This is very bad!");
 	puts("The system will now hang until the computer is rebooted!");
-	puts("Message: ");
-	puts(message);
+	printf("Message: %s", message);
 	while(1) {}
 }
