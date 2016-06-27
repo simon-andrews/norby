@@ -44,7 +44,7 @@ def kernel():
     for asm_source_file in kernel_asm_sources:
         asm_source_file_full = os.path.join(kernel_source_dir, asm_source_file)
         out = os.path.join(kernel_out_dir, asm_source_file + '.o')
-        sh('nasm -felf32 {source_file} -o {out}'.format(source_file=asm_source_file_full, out=out))
+        sh('nasm -felf32 {source_file} -o {out} -i{include}/'.format(source_file=asm_source_file_full, out=out, include=os.path.join(kernel_source_dir, 'asm')))
         object_files.append(out)
     for c_source_file in kernel_c_sources:
         c_source_file_full = os.path.join(kernel_source_dir, c_source_file)
