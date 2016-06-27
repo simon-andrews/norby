@@ -1,5 +1,6 @@
 language: c
 
+install: pip install paver
 script: paver test_libc
 
 addons:
@@ -7,4 +8,4 @@ addons:
     packages:
     - python
     - python3
-    - python-paver
+    - python-pip
