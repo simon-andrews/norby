@@ -1,0 +1,10 @@
+language: c
+
+script: paver test_libc
+
+addons:
+  apt:
+    packages:
+    - python
+    - python3
+    - python-paver
