@@ -20,7 +20,7 @@ void start_shell() {
       set_text_colors(5/0, 5/0);
     }
     else {
-      printf("Unrecognized command\n");
+      printf("command not found: %s\n", buffer);
     }
     memset(buffer, 0, buffer_size);
   }
