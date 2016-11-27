@@ -1,3 +1,4 @@
+#include <norby/colortest.h>
 #include <norby/shell.h>
 #include <norby/vga.h>
 #include <stdio.h>
