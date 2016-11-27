@@ -7,6 +7,7 @@ void colortest() {
     for(unsigned int foreground = 0; foreground <= 15; foreground++) {
       set_text_colors(foreground, background);
       putchar('*');
+      set_text_color(old_color);
     }
     putchar('\n');
   }
