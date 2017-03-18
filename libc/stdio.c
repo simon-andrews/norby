@@ -32,14 +32,29 @@ char* gets_s(char* buffer, size_t buffer_size) {
   return buffer;
 }
 
+//const int int_max_digits = 10;
+int* int_to_digits(int n) {
+  static int ret[10] = {0, 0, 0, 0, 0};
+  int index = 10;
+  while(n > 0) {
+    ret[--index] = n % 10;
+    n /= 10;
+  }
+  return ret;
+}
+
 int printf(const char* restrict format, ...) {
   va_list args;
   va_start(args, format);
   int chars_written = 0;
   for(unsigned int i = 0; i < strlen(format); i++) {
     if(format[i] == '%') {
+      //https://en.wikipedia.org/wiki/Printf_format_string#Type_field
       chars_written++;
-      const char* str; //variables can't be declared in switch statements, so this is here just in case
+
+      //variables can't be declared in switch statements, so these are here just in case
+      int* number;
+      const char* str;
       //TODO: Implement all the other things (%g...)
       switch(format[i + 1]) {
         case '%':
@@ -55,7 +70,10 @@ int printf(const char* restrict format, ...) {
           }
           break;
         case 'd':
-          putchar((char) va_arg(args, int) + '0'); //http://stackoverflow.com/a/2279401/4541644
+          number = int_to_digits(va_arg(args, int));
+          for(unsigned int j = 0; j < 10; j++) {
+            putchar((char) number[j] + '0');
+          }
           break;
         default:
           putchar('%'); // I dunno

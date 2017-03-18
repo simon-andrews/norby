@@ -55,8 +55,7 @@ bool new_key_is_availible() {
   return new_key_availible;
 }
 
-//void keyboard_handler(struct regs* r) {
-void keyboard_handler() {
+void keyboard_handler(struct regs* r) {
   unsigned char scancode = inb(0x60);
   if(scancode & 0x80) {
     //pass, for now
