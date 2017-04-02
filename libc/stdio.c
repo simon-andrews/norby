@@ -34,7 +34,7 @@ char* gets_s(char* buffer, size_t buffer_size) {
 
 //const int int_max_digits = 10;
 int* int_to_digits(int n) {
-  static int ret[10] = {0, 0, 0, 0, 0};
+  static int ret[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
   int index = 10;
   while(n > 0) {
     ret[--index] = n % 10;
@@ -70,6 +70,9 @@ int printf(const char* restrict format, ...) {
           }
           break;
         case 'd':
+          for(unsigned int j = 0; j < 10; j++) {
+            number[j] = 0;
+          }
           number = int_to_digits(va_arg(args, int));
           for(unsigned int j = 0; j < 10; j++) {
             putchar((char) number[j] + '0');

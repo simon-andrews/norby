@@ -36,6 +36,7 @@ void kmain() {
 	else {
 		printf("# of entries available: %d\n", entry_count);
 	}
+	printf("return value for get_base_memory_size(): %d\n", entry_count);
 	start_shell();
 
 	//Enter an endless loop. If you disable this, another loop in boot.asm will
