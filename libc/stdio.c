@@ -55,6 +55,7 @@ int printf(const char* restrict format, ...) {
       //variables can't be declared in switch statements, so these are here just in case
       int* number;
       const char* str;
+      bool has_reached_nonzero_digits = false;
       //TODO: Implement all the other things (%g...)
       switch(format[i + 1]) {
         case '%':
@@ -75,7 +76,8 @@ int printf(const char* restrict format, ...) {
           }
           number = int_to_digits(va_arg(args, int));
           for(unsigned int j = 0; j < 10; j++) {
-            putchar((char) number[j] + '0');
+            if(number[j] != 0) has_reached_nonzero_digits = true;
+            if(number[j] != 0 || has_reached_nonzero_digits == true || j == 9) putchar((char) number[j] + '0');
           }
           break;
         default:
