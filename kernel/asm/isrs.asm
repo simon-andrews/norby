@@ -84,24 +84,46 @@ ISR_NOERRCODE 31
 extern fault_handler
 
 isr_common_stub:
-  pusha        ; push edi, esi, ebp, esp, ebx, edx, ecx, eax to the stack
-  mov ax, ds   ; lower 16 bits of eax = data segment descriptor
-  push eax     ; save data segment descriptor
-
-  mov ax, 0x10 ; load the kernel data segment descriptor
+  pusha
+  push ds
+  push es
+  push fs
+  push gs
+  mov ax, 0x10
   mov ds, ax
   mov es, ax
   mov fs, ax
   mov gs, ax
-
-  call fault_handler
-
-  pop eax      ; reload the original data segment descriptor
-  mov ds, ax
-  mov es, ax
-  mov fs, ax
-  mov gs, ax
-
-  popa         ; pop edi...eax from the stack
-  add esp, 8   ; clean up pushed error code and pushed ISR number
-  iret         ; pop cs, eip, eflags, ss, and esp
+  mov eax, esp
+  push eax
+  mov eax, fault_handler
+  call eax
+  pop eax
+  pop gs
+  pop fs
+  pop es
+  pop ds
+  popa
+  add esp, 8
+  iret
+;  pusha        ; push edi, esi, ebp, esp, ebx, edx, ecx, eax to the stack
+;  mov ax, ds   ; lower 16 bits of eax = data segment descriptor
+;  push eax     ; save data segment descriptor
+;
+;  mov ax, 0x10 ; load the kernel data segment descriptor
+;  mov ds, ax
+;  mov es, ax
+;  mov fs, ax
+;  mov gs, ax
+;
+;  call fault_handler
+;
+;  pop eax      ; reload the original data segment descriptor
+;  mov ds, ax
+;  mov es, ax
+;  mov fs, ax
+;  mov gs, ax
+;
+;  popa         ; pop edi...eax from the stack
+;  add esp, 8   ; clean up pushed error code and pushed ISR number
+;  iret         ; pop cs, eip, eflags, ss, and esp

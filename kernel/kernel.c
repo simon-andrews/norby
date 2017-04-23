@@ -20,6 +20,7 @@ void kmain() {
 	install_isrs();
 	install_irq();
 	install_keyboard();
+
 	asm volatile ("sti");
 
 	//Set up VGA text mode, and print a welcome message

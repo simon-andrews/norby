@@ -8,7 +8,7 @@ int __attribute__((noinline)) __attribute__((regparm(3))) detect_memory(memory_m
   int entries = 0, signature, bytes;
 
   do {
-    printf("SMAP entry buffer located at memory address: %d\n", buffer);
+    //printf("SMAP entry buffer located at memory address: %d\n", buffer);
     asm volatile ("int $0x15"
       : "=a"(signature), "=c"(bytes), "=b"(contID)
       : "a"(0xE820), "b"(contID), "c"(24), "d"(E820_SIGNATURE), "D"(buffer));
@@ -20,16 +20,16 @@ int __attribute__((noinline)) __attribute__((regparm(3))) detect_memory(memory_m
       return -1;
     }
     if(bytes > 20 && (buffer->acpi & 0x0001) == 0) {
-      printf("ignoring");
+      //printf("ignoring");
       // ignore this entry
     }
     else {
-      printf("incrementing");
+      //printf("incrementing");
       buffer++;
       entries++;
     }
   } while(contID != 0 && entries < maxentries);
-  printf("returning");
+  //printf("returning");
   return entries;
 }
 

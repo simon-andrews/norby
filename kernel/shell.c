@@ -32,6 +32,9 @@ void start_shell() {
       asm volatile("nop" : "=a"(eax), "=b"(ebx), "=c"(ecx), "=d"(edx));
       printf("eax: %d\nebx: %d\necx: %d\nedx: %d\n", eax, ebx, ecx, edx);
     }
+    else if(strcmp(buffer, "dmem") == 0)  {
+      printf("%d\n", get_base_memory_size());
+    }
     else {
       printf("command not found: %s\n", buffer);
     }
