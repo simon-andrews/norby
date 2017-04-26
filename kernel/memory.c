@@ -1,5 +1,6 @@
 #include <norby/cmos.h>
 #include <norby/memory.h>
+#include <stdio.h>
 #include <stdint.h>
 #include <sys/io.h>
 

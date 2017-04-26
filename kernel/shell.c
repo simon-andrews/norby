@@ -1,4 +1,5 @@
 #include <norby/colortest.h>
+#include <norby/memory.h>
 #include <norby/shell.h>
 #include <norby/vga.h>
 #include <stdio.h>
@@ -33,7 +34,15 @@ void start_shell() {
       printf("eax: %d\nebx: %d\necx: %d\nedx: %d\n", eax, ebx, ecx, edx);
     }
     else if(strcmp(buffer, "dmem") == 0)  {
-      printf("%d\n", get_base_memory_size());
+      //Figure out how much memory we have
+      int entry_count = get_base_memory_size();
+      if(entry_count < 0) {
+        printf("signature verification failed when attempting to detect memory\n");
+      }
+      else {
+        printf("# of entries available: %d\n", entry_count);
+      }
+      printf("return value for get_base_memory_size(): %d\n", entry_count);
     }
     else {
       printf("command not found: %s\n", buffer);

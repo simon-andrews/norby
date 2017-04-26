@@ -29,15 +29,6 @@ void kmain() {
 	clear_screen();
 	printf("NorbyOS v%s\n", NORBY_VERSION);
 
-	//Figure out how much memory we have
-	int entry_count = get_base_memory_size();
-	if(entry_count < 0) {
-		printf("signature verification failed when attempting to detect memory\n");
-	}
-	else {
-		printf("# of entries available: %d\n", entry_count);
-	}
-	printf("return value for get_base_memory_size(): %d\n", entry_count);
 	start_shell();
 
 	//Enter an endless loop. If you disable this, another loop in boot.asm will
